@@ -451,6 +451,287 @@ export const mockRiskTrend = [
   { date: 'Jan', avgScore: 72, atRisk: 12 },
 ];
 
+// Users
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: 'admin' | 'manager' | 'technician' | 'viewer';
+  status: 'active' | 'invited' | 'disabled';
+  avatar?: string;
+  lastActive: string;
+  groups: string[];
+}
+
+export const mockUsers: User[] = [
+  {
+    id: 'u1',
+    name: 'Mike Johnson',
+    email: 'mike.johnson@acmetrucking.com',
+    role: 'admin',
+    status: 'active',
+    lastActive: '2026-01-21T11:30:00Z',
+    groups: ['All Vehicles', 'Western Region'],
+  },
+  {
+    id: 'u2',
+    name: 'Sarah Chen',
+    email: 'sarah.chen@acmetrucking.com',
+    role: 'manager',
+    status: 'active',
+    lastActive: '2026-01-21T10:15:00Z',
+    groups: ['Western Region'],
+  },
+  {
+    id: 'u3',
+    name: 'James Wilson',
+    email: 'james.wilson@acmetrucking.com',
+    role: 'technician',
+    status: 'active',
+    lastActive: '2026-01-21T09:45:00Z',
+    groups: ['Shop A'],
+  },
+  {
+    id: 'u4',
+    name: 'Emily Rodriguez',
+    email: 'emily.r@acmetrucking.com',
+    role: 'viewer',
+    status: 'active',
+    lastActive: '2026-01-20T16:00:00Z',
+    groups: ['All Vehicles'],
+  },
+  {
+    id: 'u5',
+    name: 'Tom Bradley',
+    email: 'tom.bradley@acmetrucking.com',
+    role: 'technician',
+    status: 'invited',
+    lastActive: '',
+    groups: ['Shop B'],
+  },
+  {
+    id: 'u6',
+    name: 'Lisa Martinez',
+    email: 'lisa.m@acmetrucking.com',
+    role: 'manager',
+    status: 'disabled',
+    lastActive: '2026-01-10T14:00:00Z',
+    groups: ['Eastern Region'],
+  },
+];
+
+// Groups
+export interface VehicleGroup {
+  id: string;
+  name: string;
+  description: string;
+  vehicleCount: number;
+  avgHealthScore: number;
+  criticalCount: number;
+  parentGroup?: string;
+  type: 'region' | 'shop' | 'customer' | 'custom';
+}
+
+export const mockGroups: VehicleGroup[] = [
+  {
+    id: 'g1',
+    name: 'All Vehicles',
+    description: 'All monitored vehicles in the fleet',
+    vehicleCount: 142,
+    avgHealthScore: 72,
+    criticalCount: 3,
+    type: 'custom',
+  },
+  {
+    id: 'g2',
+    name: 'Western Region',
+    description: 'Vehicles operating in CA, OR, WA, NV',
+    vehicleCount: 68,
+    avgHealthScore: 74,
+    criticalCount: 1,
+    type: 'region',
+  },
+  {
+    id: 'g3',
+    name: 'Eastern Region',
+    description: 'Vehicles operating in TX, OK, AR, LA',
+    vehicleCount: 74,
+    avgHealthScore: 70,
+    criticalCount: 2,
+    type: 'region',
+  },
+  {
+    id: 'g4',
+    name: 'Shop A - Sacramento',
+    description: 'Primary service location vehicles',
+    vehicleCount: 45,
+    avgHealthScore: 78,
+    criticalCount: 0,
+    parentGroup: 'Western Region',
+    type: 'shop',
+  },
+  {
+    id: 'g5',
+    name: 'Shop B - Dallas',
+    description: 'Texas regional service center',
+    vehicleCount: 52,
+    avgHealthScore: 68,
+    criticalCount: 2,
+    parentGroup: 'Eastern Region',
+    type: 'shop',
+  },
+  {
+    id: 'g6',
+    name: 'High Mileage Fleet',
+    description: 'Vehicles with 500K+ miles',
+    vehicleCount: 23,
+    avgHealthScore: 65,
+    criticalCount: 1,
+    type: 'custom',
+  },
+  {
+    id: 'g7',
+    name: 'New Acquisitions 2024',
+    description: 'Vehicles purchased in 2024',
+    vehicleCount: 18,
+    avgHealthScore: 92,
+    criticalCount: 0,
+    type: 'custom',
+  },
+];
+
+// Report Types and Data
+export interface ReportDefinition {
+  id: string;
+  name: string;
+  description: string;
+  category: 'fleet' | 'maintenance' | 'financial' | 'compliance';
+  icon: string;
+  lastRun?: string;
+  frequency: 'daily' | 'weekly' | 'monthly' | 'on-demand';
+  aiInsights?: boolean;
+}
+
+export const mockReports: ReportDefinition[] = [
+  {
+    id: 'r1',
+    name: 'Fleet Health Overview',
+    description: 'Comprehensive health scores, risk distribution, and trend analysis across the entire fleet',
+    category: 'fleet',
+    icon: 'Activity',
+    lastRun: '2026-01-21T06:00:00Z',
+    frequency: 'daily',
+    aiInsights: true,
+  },
+  {
+    id: 'r2',
+    name: 'Predictive Maintenance',
+    description: 'AI-powered failure predictions with component-level probability and confidence metrics',
+    category: 'maintenance',
+    icon: 'Brain',
+    lastRun: '2026-01-21T06:00:00Z',
+    frequency: 'daily',
+    aiInsights: true,
+  },
+  {
+    id: 'r3',
+    name: 'Fault Code Analysis',
+    description: 'Most common fault codes, patterns by vehicle age/mileage, resolution time analytics',
+    category: 'maintenance',
+    icon: 'AlertTriangle',
+    lastRun: '2026-01-20T06:00:00Z',
+    frequency: 'weekly',
+    aiInsights: true,
+  },
+  {
+    id: 'r4',
+    name: 'Service Pipeline',
+    description: 'Upcoming service needs, technician workload, and scheduling optimization',
+    category: 'maintenance',
+    icon: 'Calendar',
+    lastRun: '2026-01-21T06:00:00Z',
+    frequency: 'daily',
+    aiInsights: false,
+  },
+  {
+    id: 'r5',
+    name: 'Financial Impact',
+    description: 'Downtime costs avoided, warranty utilization, predicted maintenance costs',
+    category: 'financial',
+    icon: 'DollarSign',
+    lastRun: '2026-01-20T06:00:00Z',
+    frequency: 'weekly',
+    aiInsights: true,
+  },
+  {
+    id: 'r6',
+    name: 'Warranty Tracker',
+    description: 'Warranty status, expiration alerts, and claim opportunity analysis',
+    category: 'financial',
+    icon: 'Shield',
+    lastRun: '2026-01-15T06:00:00Z',
+    frequency: 'monthly',
+    aiInsights: false,
+  },
+  {
+    id: 'r7',
+    name: 'DOT Compliance',
+    description: 'Inspection readiness, out-of-service risk, and compliance metrics',
+    category: 'compliance',
+    icon: 'FileCheck',
+    lastRun: '2026-01-20T06:00:00Z',
+    frequency: 'weekly',
+    aiInsights: false,
+  },
+  {
+    id: 'r8',
+    name: 'Component Lifecycle',
+    description: 'Age and wear analysis by component type, replacement forecasting',
+    category: 'maintenance',
+    icon: 'Wrench',
+    lastRun: '2026-01-19T06:00:00Z',
+    frequency: 'monthly',
+    aiInsights: true,
+  },
+];
+
+// Report Chart Data
+export const mockFleetHealthTrend = [
+  { month: 'Aug', avgScore: 79, critical: 1, high: 6, medium: 14, low: 121 },
+  { month: 'Sep', avgScore: 78, critical: 2, high: 7, medium: 15, low: 118 },
+  { month: 'Oct', avgScore: 77, critical: 2, high: 9, medium: 16, low: 115 },
+  { month: 'Nov', avgScore: 75, critical: 2, high: 10, medium: 18, low: 112 },
+  { month: 'Dec', avgScore: 74, critical: 3, high: 11, medium: 17, low: 111 },
+  { month: 'Jan', avgScore: 72, critical: 3, high: 12, medium: 19, low: 108 },
+];
+
+export const mockComponentFailures = [
+  { component: 'DEF System', count: 23, avgCost: 1200, trend: 'up' },
+  { component: 'Turbocharger', count: 12, avgCost: 3500, trend: 'stable' },
+  { component: 'DPF System', count: 18, avgCost: 2800, trend: 'down' },
+  { component: 'EGR Valve', count: 8, avgCost: 900, trend: 'up' },
+  { component: 'Fuel Injector', count: 15, avgCost: 450, trend: 'stable' },
+  { component: 'Coolant System', count: 6, avgCost: 650, trend: 'down' },
+];
+
+export const mockFinancialSummary = {
+  downtimeAvoided: 847500,
+  warrantyRecovered: 156000,
+  predictedMaintenance90d: 342000,
+  actualVsPredicted: 0.92, // 92% accuracy
+  costPerMile: 0.18,
+  costPerMileTrend: -0.02,
+};
+
+export const mockFaultsBySystem = [
+  { system: 'Aftertreatment', count: 45, percentage: 32 },
+  { system: 'Engine', count: 28, percentage: 20 },
+  { system: 'Transmission', count: 18, percentage: 13 },
+  { system: 'Electrical', count: 22, percentage: 16 },
+  { system: 'Brakes', count: 12, percentage: 9 },
+  { system: 'Other', count: 15, percentage: 10 },
+];
+
 // Spec Documents for Landing Page
 export const specDocuments = [
   {
