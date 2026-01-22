@@ -58,7 +58,10 @@ export function Sidebar() {
           Overview
         </p>
         {navigation.map((item) => {
-          const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
+          // Dashboard should only be active on exact match, others can match children
+          const isActive = item.href === '/dashboard'
+            ? pathname === '/dashboard'
+            : pathname === item.href || pathname.startsWith(item.href + '/');
           return (
             <Link
               key={item.name}
