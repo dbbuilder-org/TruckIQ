@@ -1,0 +1,39 @@
+# Credentials and secrets
+.trucktech_credentials.json
+*.env
+.env*
+
+# Session storage
+session_storage.json
+
+# Sync results (may contain sensitive data)
+sync_result.json
+*_sync.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+.venv/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,21 @@
+# TruckTech+ Scraper Dependencies
+
+# Browser automation
+playwright>=1.40.0
+
+# MFA support
+pyotp>=2.9.0
+
+# Credential encryption
+cryptography>=41.0.0
+
+# HTTP client (for future API integration)
+requests>=2.31.0
+
+# Retry logic
+tenacity>=8.2.0
+
+# Development
+pytest>=7.4.0
+pytest-playwright>=0.4.0
+python-dotenv>=1.0.0
