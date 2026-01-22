@@ -1,0 +1,92 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Testing
+coverage/
+.nyc_output/
+
+# Next.js
+.next/
+out/
+build/
+
+# Production
+dist/
+
+# Misc
+.DS_Store
+*.pem
+Thumbs.db
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Python (for scraper)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+ENV/
+.venv/
+env/
+
+# Playwright
+playwright-report/
+playwright/.cache/
+test-results/
+
+# Logs
+logs/
+*.log
+
+# Database
+*.sqlite
+*.db
+
+# Secrets
+secrets/
+*.p8
+*.pem
+.secrets/
+
+# Screenshots from scraping
+screenshots/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Batch state files
+batch_state.json
+
+# Browser session data
+browser_data/
